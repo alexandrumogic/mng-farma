@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { DrugsSearchComponent } from './drugs-search/drugs-search.component';
@@ -21,7 +22,8 @@ import { environment } from '../environments/environment';
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

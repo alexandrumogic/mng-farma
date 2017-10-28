@@ -10,7 +10,7 @@ export class DrugsService {
     return this.db.list('/drugs', {
       query: {
         orderByChild: 'Title',
-        limitToFirst: 5,
+        limitToFirst: 10,
         startAt: start,
         endAt: end
       }
