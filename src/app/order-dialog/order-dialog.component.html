@@ -1,0 +1,19 @@
+<div class="modal-header" style="background: #007bff;">
+  <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body">
+    <div class="container">
+  <div class="input-group spinner">
+  <input type="text" [(ngModel)]="pieces" class="form-control">
+  <div class="input-group-btn-vertical">
+    <button class="btn btn-default" (click)="increment()" type="button"><i class="fa fa-caret-up"></i></button>
+    <button class="btn btn-default" (click)="decrement()" type="button"><i class="fa fa-caret-down"></i></button>
+  </div>
+  </div>
+    <h3 style="padding-top:10px;">{{pieces}} x {{price}} lei = {{result}} lei</h3>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success" (click)="order(); activeModal.close('Close click')">Comanda</button>
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Anuleaza</button>
+</div>

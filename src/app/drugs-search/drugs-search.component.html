@@ -13,6 +13,11 @@
           <a class="nav-link" href="#">Comenzi</a>
         </li>
       </ul>
+      <ul class="navbar-nav ml-auto">
+        <button type="button" class="btn btn-primary">
+          Cos <span class="badge badge-light"> {{cart}}</span>
+        </button>
+      </ul>
     </div>
   </nav>
 </div>
@@ -26,7 +31,7 @@
         <ng-template ngbPanelContent>
           {{drug?.Administration}}
           <div class="row col-md-12" style="padding-top: 10px">
-            <button type="button" class="btn btn-sm btn-primary">Comanda</button>
+            <button type="button" class="btn btn-sm btn-primary" (click)="open(drug)">Comanda</button>
           </div>
         </ng-template>
       </ngb-panel>

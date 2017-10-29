@@ -11,11 +11,16 @@ import { AppComponent } from './app.component';
 import { DrugsSearchComponent } from './drugs-search/drugs-search.component';
 
 import { environment } from '../environments/environment';
+import { OrderDialogComponent } from './order-dialog/order-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DrugsSearchComponent
+    DrugsSearchComponent,
+    OrderDialogComponent
+  ],
+  entryComponents: [
+    OrderDialogComponent
   ],
   imports: [
     BrowserModule,
