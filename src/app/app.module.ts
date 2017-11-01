@@ -6,9 +6,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+
 import { DrugsSearchComponent } from './pages/drugs-search/drugs-search.component';
 
 import { environment } from '../environments/environment';
