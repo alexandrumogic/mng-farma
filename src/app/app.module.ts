@@ -21,6 +21,8 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { RaportsComponent } from './pages/raports/raports.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
+import { BasketService } from './providers/basket.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [BasketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

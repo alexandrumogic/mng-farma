@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BasketService } from '../providers/basket.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  cart: number = 0;
+  basketItems: number = 0;
 
-  constructor() { }
+  constructor(private basketService: BasketService) {
+    basketService.getNumberOfOrders().subscribe((value) => {
+      this.basketItems = value;
+      console.log("Navbar: " + this.basketItems);
+    })
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { BasketService } from '../../providers/basket.service';
 
 @Component({
   selector: 'app-order-dialog',
@@ -13,13 +14,13 @@ export class OrderDialogComponent implements OnInit {
   pieces: number;
   result: number;
 
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal, private basketService: BasketService) {
     this.pieces = 0;
     this.result = 0;
   }
 
   order() {
-    console.log("Order");
+    this.basketService.addOrder();
   }
 
   calculate() {
