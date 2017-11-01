@@ -6,20 +6,31 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { AngularFireDatabaseModule } from 'angularfire2/database-deprecated';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
-import { DrugsSearchComponent } from './drugs-search/drugs-search.component';
+import { DrugsSearchComponent } from './pages/drugs-search/drugs-search.component';
 
 import { environment } from '../environments/environment';
-import { OrderDialogComponent } from './order-dialog/order-dialog.component';
+import { OrderDialogComponent } from './components/order-dialog/order-dialog.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AccountComponent } from './pages/account/account.component';
+import { BasketComponent } from './pages/basket/basket.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { RaportsComponent } from './pages/raports/raports.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DrugsSearchComponent,
     OrderDialogComponent,
-    NavbarComponent
+    NavbarComponent,
+    AccountComponent,
+    BasketComponent,
+    OrdersComponent,
+    RaportsComponent,
+    PageNotFoundComponent
   ],
   entryComponents: [
     OrderDialogComponent
@@ -30,7 +41,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

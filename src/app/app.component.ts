@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DrugsSearchComponent } from './drugs-search/drugs-search.component';
 import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({

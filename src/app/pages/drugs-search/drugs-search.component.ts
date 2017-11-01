@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DrugsService } from '../drugs.service';
+import { DrugsService } from '../../providers/drugs.service';
 import { Subject } from 'rxjs/Subject'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
+import { OrderDialogComponent } from '../../components/order-dialog/order-dialog.component';
 
 
 @Component({
@@ -16,7 +16,6 @@ export class DrugsSearchComponent implements OnInit {
   drugs;
   startAt = new Subject()
   endAt = new Subject()
-  cart: number = 0;
 
   constructor(private drugsSvc: DrugsService, private modalService: NgbModal ) { }
 
