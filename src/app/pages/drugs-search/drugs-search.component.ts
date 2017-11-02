@@ -23,6 +23,7 @@ export class DrugsSearchComponent implements OnInit {
     const modalRef = this.modalService.open(OrderDialogComponent);
     modalRef.componentInstance.title = drug.Title ;
     modalRef.componentInstance.price = drug.Price;
+    modalRef.componentInstance.key = drug.$key;
   }
 
   ngOnInit() {

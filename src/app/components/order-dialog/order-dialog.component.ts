@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BasketService } from '../../providers/basket.service';
+import { Item } from '../../shared/item';
 
 @Component({
   selector: 'app-order-dialog',
@@ -10,6 +11,7 @@ import { BasketService } from '../../providers/basket.service';
 export class OrderDialogComponent implements OnInit {
   @Input() title;
   @Input() price;
+  @Input() key;
 
   pieces: number;
   result: number;
@@ -20,7 +22,8 @@ export class OrderDialogComponent implements OnInit {
   }
 
   order() {
-    this.basketService.addOrder();
+    let item = new Item(this.key, this.title, this.pieces, this.price);
+    this.basketService.addItem(item, this.pieces);
   }
 
   calculate() {

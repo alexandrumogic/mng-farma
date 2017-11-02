@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
   basketItems: number = 0;
 
   constructor(private basketService: BasketService) {
-    basketService.getNumberOfOrders().subscribe((value) => {
+    basketService.getNumberOfItems().subscribe((value) => {
       this.basketItems = value;
       console.log("Navbar: " + this.basketItems);
     })
