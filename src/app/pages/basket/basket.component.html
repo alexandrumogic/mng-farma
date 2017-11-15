@@ -23,7 +23,7 @@
   </tbody>
 </table>
 <div *ngIf="items.length > 0" class="footer">
-  <h4>Total: {{totalPrice}} lei <button type="button" class="btn btn-lg btn-success" style="float: right; padding: 0 !important">Proceseaza comanda</button></h4>
+  <h4>Total: {{totalPrice}} lei <button type="button" class="btn btn-lg btn-success" (click)="processOrder()" style="float: right; padding: .2rem 1rem;">Proceseaza comanda</button></h4>
 </div>
 
 </div>

@@ -23,6 +23,7 @@ export class BasketService {
 
   addItem(item: Item, pieces: number) {
     // Check if item already in basket
+    console.log(this._items);
     let checkItem = this._items.find(itemFound => itemFound.id == item.id);
 
     if (checkItem) {
@@ -54,8 +55,11 @@ export class BasketService {
     this._numberOfItemsBS.next(this._numberOfItems -= pieces);
   }
 
-  updateItem() {
-
+  removeAllItems() {
+      this._items = [];
+      this._numberOfItems = 0;
+      this._numberOfItemsBS.next(0);
+      this._itemsBS.next(this._items);
   }
 
   getNumberOfItems() {

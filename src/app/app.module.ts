@@ -22,6 +22,8 @@ import { RaportsComponent } from './pages/raports/raports.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 import { BasketService } from './providers/basket.service';
+import { OrdersService } from './providers/orders.service';
+import { OrderResponseDialogComponent } from './components/order-response-dialog/order-response-dialog.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,12 @@ import { BasketService } from './providers/basket.service';
     BasketComponent,
     OrdersComponent,
     RaportsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    OrderResponseDialogComponent
   ],
   entryComponents: [
-    OrderDialogComponent
+    OrderDialogComponent,
+    OrderResponseDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ import { BasketService } from './providers/basket.service';
     NgbModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [BasketService],
+  providers: [BasketService, OrdersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

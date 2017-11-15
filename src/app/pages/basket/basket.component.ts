@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BasketService } from '../../providers/basket.service';
+import { OrdersService } from '../../providers/orders.service';
 import { Item } from '../../shared/item';
+import { Order } from '../../shared/order';
+import { DateGenerator } from '../../shared/date';
+import { OrderResponseDialogComponent } from '../../components/order-response-dialog/order-response-dialog.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-basket',
@@ -12,7 +17,7 @@ export class BasketComponent implements OnInit {
   items: Item[] = [];
   totalPrice: Number = 0;
 
-  constructor(private basketService: BasketService) { }
+  constructor(private basketService: BasketService, private ordersService: OrdersService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.basketService.getItems().subscribe((items) => this.items = items);
@@ -36,6 +41,19 @@ export class BasketComponent implements OnInit {
     })
 
     this.totalPrice = _totalPrice;
+  }
+
+  processOrder() {
+    var date = DateGenerator.generate();
+    let order: Order = new Order(this.items, date, null);
+    this.ordersService.processOrder(order).then((key) => this.openModal(key));
+    this.basketService.removeAllItems();
+    this.items = [];
+  }
+
+  openModal(key: any) {
+    const modalRef = this.modalService.open(OrderResponseDialogComponent);
+    modalRef.componentInstance.key = key;
   }
 
 }

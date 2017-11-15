@@ -1,0 +1,13 @@
+<div class="modal-header" style="background: #007bff;">
+  <h4 class="modal-title">Comanda efectuata cu succes!</h4>
+</div>
+<div class="modal-body">
+    <div class="container">
+      <p>Multumim pentru comanda!</p>
+      <p>Numarul tau de comanda este: <strong>{{key}}</strong></p>
+      <p>Pentru a ridica comanda te asteptam in farmaciile noastre.</p>
+    </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-success" (click)="activeModal.close('Close click')" routerLink="/">OK</button>
+</div>
