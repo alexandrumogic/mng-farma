@@ -41,7 +41,7 @@ export class BasketService {
 
     if (checkItem) {
       // If it is, update pieces value
-      checkItem.pieces += pieces;
+      checkItem.pieces -= pieces;
 
       if (checkItem.pieces <= 0)
       {
@@ -51,7 +51,7 @@ export class BasketService {
       // this.items.push(item);
     }
     // Anounce that number of items increased
-    this._numberOfItemsBS.next(this._numberOfItems += pieces);
+    this._numberOfItemsBS.next(this._numberOfItems -= pieces);
   }
 
   updateItem() {

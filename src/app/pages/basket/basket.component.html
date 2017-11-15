@@ -1,6 +1,29 @@
 <div class="container">
-  <h2>Cos medicamente</h2>
-  <ul class="list-group" *ngFor="let item of items">
-    <li class="list-group-item">{{item.title}}</li>
-  </ul>
+  <div class="header">
+    <h2>Cos medicamente</h2>
+  </div>
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Titlu</th>
+      <th scope="col">Bucati</th>
+      <th scope="col">Pret</th>
+      <th scope="col">Actiuni</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of items; let i = index">
+    <tr>
+      <th scope="row">{{i+1}}</th>
+      <td>{{item.title}}</td>
+      <td>{{item.pieces}}</td>
+      <td>{{item.price * item.pieces}}</td>
+      <td><button type="button" class="btn btn-sm btn-danger" (click)="removeItem(item)" style="margin-right: 5px">Sterge</button><button type="button" class="btn btn-sm btn-success" (click)="addItem(item)">Adauga</button></td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="items.length > 0" class="footer">
+  <h4>Total: {{totalPrice}} lei <button type="button" class="btn btn-lg btn-success" style="float: right; padding: 0 !important">Proceseaza comanda</button></h4>
+</div>
+
 </div>
