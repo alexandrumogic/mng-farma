@@ -12,13 +12,7 @@ export class OrdersService {
   }
 
   getOrders(start, end): FirebaseListObservable<any> {
-    return this.db.list('/orders', {
-      query: {
-        limitToFirst: 10,
-        startAt: start,
-        endAt: end
-      }
-    });
+    return this.orders;
   }
 
   processOrder(order: Order) {
