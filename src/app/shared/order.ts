@@ -2,10 +2,10 @@ import { Item } from './item';
 
 export class Order {
   orders: Item[];
-  dateOrdered: string;
-  datePicked: string;
+  dateOrdered: number;
+  datePicked: number;
 
-  constructor(orders:  Item[], dateOrdered: string, datePicked: string)
+  constructor(orders:  Item[], dateOrdered: number, datePicked: number)
   {
     this.orders = orders;
     this.dateOrdered = dateOrdered;

@@ -33,6 +33,7 @@ export class DrugsSearchComponent implements OnInit {
   }
 
   search($event) {
+    console.log(this.drugs);
     console.log($event)
     let q = $event.target.value
     this.startAt.next(q)

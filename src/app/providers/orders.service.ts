@@ -8,11 +8,18 @@ export class OrdersService {
   orders: FirebaseListObservable<any>;
 
   constructor(private db: AngularFireDatabase) {
-    this.orders = this.db.list('/orders');
+    this.orders = this.getOrders('A', 'Z');
   }
 
   getOrders(start, end): FirebaseListObservable<any> {
-    return this.orders;
+    return this.db.list('/orders', {
+      query: {
+        orderByKey: true,
+        limitToFirst: 10,
+        startAt: start,
+        endAt: end
+      }
+    });
   }
 
   processOrder(order: Order) {

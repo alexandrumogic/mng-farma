@@ -1,15 +1,33 @@
 <div class="container">
-  <form class="form-inline" style="padding-top: 10px; padding-bottom: 10px">
-    <input class="form-control mr-sm-2" (keydown)="search($event)" type="search" placeholder="Cauta medicament...">
+  <div class="header">
+    <div class="col-md-6"> <h2>Comenzi</h2></div>
+  <form class="form-inline search" style="padding-top: 5px; padding-bottom: 5px;  padding-left: 15px;">
+    <input class="form-control mr-sm-2" style="float: right;" (keydown)="search($event)" type="search" placeholder="Cauta comanda...">
   </form>
+  </div>
   <div *ngFor="let order of orders">
-    <ngb-accordion #acc="ngbAccordion">
-      <ngb-panel title={{order}}>
+    <ngb-accordion [closeOthers]="true" #acc="ngbAccordion">
+      <ngb-panel title="{{order?.$key}}">
         <ng-template ngbPanelContent>
-          {{order.dateOrdered}}
-          <div class="row col-md-12" style="padding-top: 10px">
-            <button type="button" class="btn btn-sm btn-primary">Comanda</button>
-          </div>
+            <p>Data comanda: {{order.dateOrdered | date :'medium'}}</p>
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Titlu</th>
+                  <th scope="col">Bucati</th>
+                  <th scope="col">Pret</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let orderitems of order.orders; let i = index">
+                <tr>
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{orderitems.title}}</td>
+                  <td>{{orderitems.pieces}}</td>
+                  <td>{{orderitems.price * orderitems.pieces}}</td>
+                </tr>
+              </tbody>
+            </table>
         </ng-template>
       </ngb-panel>
     </ngb-accordion>

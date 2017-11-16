@@ -44,7 +44,7 @@ export class BasketComponent implements OnInit {
   }
 
   processOrder() {
-    var date = DateGenerator.generate();
+    var date = Date.now();
     let order: Order = new Order(this.items, date, null);
     this.ordersService.processOrder(order).then((key) => this.openModal(key));
     this.basketService.removeAllItems();

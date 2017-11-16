@@ -20,14 +20,19 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.orderService.getOrders(this.startAt, this.endAt).subscribe(orders => this.orders = orders);
+    this.startAt.next('-');
+    this.endAt.next('z');
   }
 
   search($event) {
+    var date = Date.now();
+    console.log(date);
+    console.log("ORDERS");
+    console.log($event);
     console.log(this.orders);
-    console.log($event)
-    let q = $event.target.value
-    this.startAt.next(q)
-    this.endAt.next(q+"\uf8ff")
+    let q = $event.target.value;
+    this.startAt.next(q);
+    this.endAt.next(q+"\uf8ff");
   }
 
 }
