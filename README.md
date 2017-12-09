@@ -1,28 +1,22 @@
-# MngFarmaApp
+# Managementul unei farmacii
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.4.
+Managementul unei farmacii este  o aplicatie web care permite utilizatorilor sa caute medicamente intr-o baza de date si sa li se afiseze dupa gasire pretul si caracteristicile medicamentului (ce tip de medicament este si cum se administreaza). Clientii pot sa plateasca on-line medicamentele si sa mearga cu un id sau cod generat sa ridice medicamentele.
 
-## Development server
+Farmacisti vor sti ce medicamente au in stoc (cantitate). Ei pot face oferte (reduceri de preturi intr-o anumita perioada) sau sa creasca pretul medicamentelor. Acestia vor fi avertizati cand au in stoc medicamente mai putine de o anumita cantitate. Ei pot sa creeze rapoarte pe cate medicamente a vandut /zi/saptamana/luna/an. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Aplicatia permite crearea de facturi pentru clienti cu cate medicamente au cumparat, in ce data si ora si la ce farmacist.
 
-## Code scaffolding
+# Tehnologii folosite
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+Aplicatia a fost proiectata utilizand Angular CLI (https://github.com/angular/angular-cli). 
 
-## Build
+Pentru baza de date sa folosit Firebase, iar pentru partea client s-a folosit framework-ul Angular. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+# Rulare
 
-## Running unit tests
+Pentru rulare este necesar sa aveti instalat pe sistemul de operare NodeJS si Angular CLI.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Se vor respecta urmatorii pasi:
+- git clone https://github.com/alexandrumogic/mng-farma.git
+- npm install
+- ng serve
