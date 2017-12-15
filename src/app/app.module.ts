@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { BasketService } from './providers/basket.service';
 import { OrdersService } from './providers/orders.service';
 import { OrderResponseDialogComponent } from './components/order-response-dialog/order-response-dialog.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { OrderResponseDialogComponent } from './components/order-response-dialog
     OrdersComponent,
     RaportsComponent,
     PageNotFoundComponent,
-    OrderResponseDialogComponent
+    OrderResponseDialogComponent,
+    LoginComponent
   ],
   entryComponents: [
     OrderDialogComponent,

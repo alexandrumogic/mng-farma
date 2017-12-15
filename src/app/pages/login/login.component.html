@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="container">
+      <div class="row justify-content-center align-self-center vertical-center">
+          <div class="card col-md-6">
+            <div class="login__card">
+              <div class="card-block">
+                  <form [formGroup]="userForm" (ngSubmit)="signIn()">
+                    <h3 align="center">Autentificare</h3>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" formControlName="email" required placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Parola</label>
+                      <input type="password" class="form-control" formControlName="password" required placeholder="Parola">
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-bottom: 20px" [disabled]="!userForm.valid">
+                          Autentificare
+                        </button>
+                    </div>
+                  </form>
+              </div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+</div>  <!-- end container -->
