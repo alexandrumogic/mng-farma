@@ -23,33 +23,20 @@ export class AuthService {
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
         this.user = _firebaseAuth.authState;
-
-        this.user.subscribe(
-          (user) => {
-            if (user) {
-              this.userDetails = user;
-              console.log(this.userDetails);
-            }
-            else {
-              this.userDetails = null;
-            }
-          }
-        );
   }
 
-  signIn(credentials: EmailPasswordCredentials) {
-    this._firebaseAuth.auth.signInWithEmailAndPassword(credentials)
-    .then(function(res) {
-      console.log(res);
-    })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ...
-
-      console.log(errorCode);
-    });
+  login(email: string, password: string) {
+    this._firebaseAuth
+      .auth
+      .signInWithEmailAndPassword(email, password)
+      .then(value => {
+        console.log("Loged in .");
+      })
+      .then((res) => this.router.navigate(['/']))
+      .catch(err => {
+        console.log("Error", err.message);
+        return err;
+      });
   }
 
   logout() {
