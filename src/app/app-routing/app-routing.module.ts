@@ -8,15 +8,16 @@ import { RaportsComponent } from '../pages/raports/raports.component';
 import { OrdersComponent } from '../pages/orders/orders.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 import { LoginComponent } from '../pages/login/login.component';
+import { AuthGuardService } from '../providers/auth-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'account', component: AccountComponent },
-  { path: 'drugsearch', component: DrugsSearchComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'basket', component: BasketComponent },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
+  { path: 'drugsearch', component: DrugsSearchComponent, canActivate: [AuthGuardService] },
+  { path: 'orders', component: OrdersComponent, canActivate: [AuthGuardService] },
+  { path: 'basket', component: BasketComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'raports', component: RaportsComponent },
-  { path: '', redirectTo: '/drugsearch', pathMatch: 'full'},
+  { path: 'raports', component: RaportsComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent }
 ];
 

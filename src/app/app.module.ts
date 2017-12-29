@@ -27,6 +27,7 @@ import { OrdersService } from './providers/orders.service';
 import { OrderResponseDialogComponent } from './components/order-response-dialog/order-response-dialog.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './providers/auth.service';
+import { AuthGuardService } from './providers/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { AuthService } from './providers/auth.service';
     AppRoutingModule,
     AngularFireAuthModule
   ],
-  providers: [BasketService, OrdersService, AuthService],
+  providers: [BasketService, OrdersService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,7 +22,7 @@ export class AuthService {
   private userDetails: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
-        this.user = _firebaseAuth.authState;
+
   }
 
   login(email: string, password: string) {
@@ -31,8 +31,9 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         console.log("Loged in .");
+        this.user = this._firebaseAuth.authState;
       })
-      .then((res) => this.router.navigate(['/']))
+      .then((res) => this.router.navigate(['/drugsearch']))
       .catch(err => {
         console.log("Error", err.message);
         return err;
@@ -42,6 +43,25 @@ export class AuthService {
   logout() {
     this._firebaseAuth.auth.signOut()
       .then((res) => this.router.navigate(['/']));
+  }
+
+  createAccount(email: string, password: string) {
+    this._firebaseAuth
+      .auth
+      .createUserWithEmailAndPassword(email, password).then((user) => {
+        this.login(email, password);
+      }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorMessage);
+    });
+  }
+
+  get isAuthenticated(): any {
+    if (this.user)
+      return true;
+    else
+      return false;
   }
 
 }

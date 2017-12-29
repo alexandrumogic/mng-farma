@@ -13,9 +13,11 @@ export class LoginComponent {
 
   email: string;
   password: string;
-  error: string;
+  createNewAccount: boolean;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    this.createNewAccount = false;
+  }
 
   login() {
     this.authService.login(this.email, this.password);
@@ -24,6 +26,15 @@ export class LoginComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  switchToNewAccountView() {
+    this.createNewAccount = true;
+  }
+
+  createAccount() {
+      this.authService.createAccount(this.email, this.password);
+      this.createNewAccount = false;
   }
 
 }
