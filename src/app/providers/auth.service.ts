@@ -64,4 +64,10 @@ export class AuthService {
       return false;
   }
 
+  getUserID() {
+    var user =this._firebaseAuth.auth.currentUser;
+
+    return user.uid;
+  }
+
 }
