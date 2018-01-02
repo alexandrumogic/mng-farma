@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from "@angular/router";
 import * as firebase from 'firebase/app';
@@ -20,8 +20,10 @@ export class EmailPasswordCredentials {
 export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
+  private userRole: any;
+  private userID: any;
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, private db: AngularFireDatabase) {
 
   }
 
@@ -30,10 +32,14 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        console.log("Loged in .");
         this.user = this._firebaseAuth.authState;
+        this.userID = value.uid;
+        return value.uid;
       })
-      .then((res) => this.router.navigate(['/drugsearch']))
+      .then((uid) => {
+
+        this.router.navigate(['/drugsearch']);
+      })
       .catch(err => {
         console.log("Error", err.message);
         return err;
@@ -49,6 +55,8 @@ export class AuthService {
     this._firebaseAuth
       .auth
       .createUserWithEmailAndPassword(email, password).then((user) => {
+        var uid = this.getUserID();
+        this.db.list(`/users/${uid}`).set('role','user');
         this.login(email, password);
       }).catch(function(error) {
         var errorCode = error.code;
@@ -65,9 +73,14 @@ export class AuthService {
   }
 
   getUserID() {
-    var user =this._firebaseAuth.auth.currentUser;
+    return this.userID;
+  }
 
-    return user.uid;
+  getUserRole(uid: string) {
+    let role;
+    this.db.object(`/users/${uid}/role`).subscribe(val => { role = val; }); 
+
+    return role;  
   }
 
 }

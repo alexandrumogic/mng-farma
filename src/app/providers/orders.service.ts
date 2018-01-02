@@ -7,8 +7,8 @@ import { AuthService } from './auth.service';
 export class OrdersService {
 
   orders: FirebaseListObservable<any>;
+  userOrders: FirebaseListObservable<any>;
   keyData: any;
-  userOrders: any[] = [];
 
   constructor(private db: AngularFireDatabase, private authService: AuthService) {
     this.orders = this.getOrders('A', 'Z');
@@ -27,39 +27,21 @@ export class OrdersService {
 
   pushOrderAndgetKey(order: Order) {
     return this.orders.push(order).then(function(response) {
-      return response.key;
+          return response.key;
     });
   }
 
-  getUserOrders(key: any) {
-    return this.db.list(`/users/${uid}/orders`, { preserveSnapshot: true})
-      .subscribe(snapshots=> {
-          snapshots.forEach(snapshot => {
-            this.userOrders.push(snapshot.val());
-          });
-
-          this.userOrders.push(key);
-
-          return key;
-        })
-  }
 
   pushOrderToUser(key: any) {
       var uid = this.authService.getUserID();
-
-      this.db.list(`/users`).set(uid, {orders: [key, key]}).then(function() {
-        console.log("WORKED");
-      });
+      this.db.list(`/users/${uid}/orders`).push(key);
 
       return key;
   }
 
   processOrder(order: Order) {
-    return this.pushOrderAndgetKey(order)
-        .then(function(key) { return key; })
-        .then((key) => { return this.getUserOrders(key); })
-        .then((key) => { return this.pushOrderToUser(key); } )
-        .then((key) => { return key; } );
+
+        return this.pushOrderAndgetKey(order).then((key) => { return this.pushOrderToUser(key); } )
   }
 
 }
